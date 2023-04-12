@@ -25,7 +25,7 @@ public class JobData {
      * without duplicates, for a given column.
      *
      * @param field The column to retrieve values from
-     * @return List of all of the values of the given field
+     * @return List of all the values of the given field
      */
     public static ArrayList<String> findAll(String field) {
 
@@ -65,7 +65,7 @@ public class JobData {
      * with "Enterprise Holdings, Inc".
      *
      * @param column   Column that should be searched.
-     * @param value Value of teh field to search for
+     * @param value Value of the field to search for
      * @return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
@@ -79,7 +79,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())); {
                 jobs.add(row);
             }
         }
@@ -97,10 +97,22 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
-        // TODO - implement this method
-        return null;
+        for (HashMap<String, String> row : allJobs) {
+
+            for(String column : row.keySet()) {
+                String theValue = row.get(value);
+
+            if (theValue.toLowerCase().contains(value.toLowerCase())) {
+                jobs.add(row);
+            }
+        }
     }
+        return jobs;
+        // TODO - implement this method
+    }
+
 
     /**
      * Read in data from a CSV file and store it in a list
