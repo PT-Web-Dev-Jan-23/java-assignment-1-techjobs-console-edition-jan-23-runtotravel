@@ -121,7 +121,7 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
         if (someJobs.size() > 0) {
             for (HashMap<String, String> job : someJobs) {
-                System.out.println('\n' + "*****");
+                System.out.println("\n*****");
                 for (String job2 : job.keySet()) {
                     System.out.println(job2 + ": " + job.get(job2));
                 }
